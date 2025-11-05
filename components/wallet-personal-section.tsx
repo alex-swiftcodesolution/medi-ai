@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // components/wallet-personal-section.tsx
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { MedicalWallet } from "@/types";
 
 export default function PersonalSection({
   wallet,
   setWallet,
 }: {
-  wallet: any;
+  wallet: MedicalWallet;
   setWallet: (w: any) => void;
 }) {
   return (
@@ -22,7 +24,7 @@ export default function PersonalSection({
           <Input
             value={wallet.personal?.full_name ?? ""}
             onChange={(e) =>
-              setWallet((w) => ({
+              setWallet((w: { personal: any }) => ({
                 ...w,
                 personal: { ...w.personal, full_name: e.target.value },
               }))
@@ -35,7 +37,7 @@ export default function PersonalSection({
             type="date"
             value={wallet.personal?.dob ?? ""}
             onChange={(e) =>
-              setWallet((w) => ({
+              setWallet((w: { personal: any }) => ({
                 ...w,
                 personal: { ...w.personal, dob: e.target.value },
               }))
@@ -47,7 +49,7 @@ export default function PersonalSection({
           <Input
             value={wallet.personal?.blood_type ?? ""}
             onChange={(e) =>
-              setWallet((w) => ({
+              setWallet((w: { personal: any }) => ({
                 ...w,
                 personal: { ...w.personal, blood_type: e.target.value },
               }))
@@ -59,7 +61,7 @@ export default function PersonalSection({
           <Textarea
             value={(wallet.personal?.allergies ?? []).join(", ")}
             onChange={(e) =>
-              setWallet((w) => ({
+              setWallet((w: { personal: any }) => ({
                 ...w,
                 personal: {
                   ...w.personal,
@@ -77,7 +79,7 @@ export default function PersonalSection({
             type="checkbox"
             checked={wallet.personal?.organ_donor ?? false}
             onChange={(e) =>
-              setWallet((w) => ({
+              setWallet((w: { personal: any }) => ({
                 ...w,
                 personal: { ...w.personal, organ_donor: e.target.checked },
               }))
